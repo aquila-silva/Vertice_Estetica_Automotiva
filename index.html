@@ -5,15 +5,17 @@
     <meta name="author" content="Aquila Fernando Alves Silva" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="referrer" content="no-referrer" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; connect-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://images.unsplash.com;" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; connect-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; media-src 'self';" />
 
     <title>Vértice Detail | Precisão em cada detalhe</title>
 
+    <link rel="icon" href="assets/icons/arrow-up-right.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/main.js" defer></script>
   </head>
 
   <body>
+    <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
     <!-- Cabeçalho compartilhado entre as páginas. -->
     <header class="site-header">
       <a
@@ -23,11 +25,11 @@
         ><span class="brand-mark">V</span
         ><span>VÉRTICE<span class="brand-muted">/DETAIL</span></span></a
       >
-      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-navigation">
         <span></span><span></span>
       </button>
-      <nav class="main-nav" aria-label="Navegação principal">
-        <a class="active" href="index.html">Home</a
+      <nav class="main-nav" id="main-navigation" aria-label="Navegação principal">
+        <a class="active" href="index.html" aria-current="page">Home</a
         ><a href="servicos.html">Serviços</a
         ><a href="quem-somos.html">Quem somos</a
         ><a class="nav-contact" href="contato.html"
@@ -37,7 +39,7 @@
     </header>
 
     <!-- Conteúdo principal da página inicial. -->
-    <main>
+    <main id="main-content" tabindex="-1">
       <section class="hero home-hero">
         <div class="hero-copy reveal">
           <p class="eyebrow">ESTÉTICA AUTOMOTIVA · SÃO PAULO</p>

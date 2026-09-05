@@ -4,12 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="referrer" content="no-referrer" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; connect-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://images.unsplash.com;" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; connect-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; media-src 'self';" />
     <title>Contato | Vértice Detail</title>
+    <link rel="icon" href="assets/icons/arrow-up-right.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/main.js" defer></script>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
     <!-- Cabeçalho compartilhado entre as páginas. -->
     <header class="site-header">
       <a
@@ -20,21 +22,23 @@
         ><span>VÉRTICE<span class="brand-muted">/DETAIL</span></span></a
       ><button
         class="menu-toggle"
+        type="button"
         aria-label="Abrir menu"
         aria-expanded="false"
+        aria-controls="main-navigation"
       >
         <span></span><span></span>
       </button>
-      <nav class="main-nav" aria-label="Navegação principal">
+      <nav class="main-nav" id="main-navigation" aria-label="Navegação principal">
         <a href="index.html">Home</a><a href="servicos.html">Serviços</a
         ><a href="quem-somos.html">Quem somos</a
-        ><a class="nav-contact active" href="contato.html"
+        ><a class="nav-contact active" href="contato.html" aria-current="page"
           >Fale conosco <span>↗</span></a
         >
       </nav>
     </header>
     <!-- Conteúdo principal e formulário de contato. -->
-    <main>
+    <main id="main-content" tabindex="-1">
       <section class="page-hero">
         <p class="eyebrow">03 / FALE COM A GENTE</p>
         <h1>Vamos cuidar<br /><em>do seu carro?</em></h1>
@@ -114,7 +118,7 @@
               <button class="button button-dark" type="submit">
                 Enviar mensagem <span>↗</span>
               </button>
-              <p class="form-status" role="status"></p>
+              <p class="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
               <p class="privacy-note">Este protótipo não envia nem armazena seus dados.</p>
             </div>
           </form>

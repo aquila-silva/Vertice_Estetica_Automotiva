@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" role="img" aria-labelledby="title">
+  <title>Textura animada de linhas de inspeção</title>
+  <defs>
+    <pattern id="lines" width="16" height="16" patternUnits="userSpaceOnUse">
+      <path d="M0 0h16" stroke="#b7b7b1" stroke-opacity=".45" />
+    </pattern>
+  </defs>
+  <rect width="640" height="240" fill="#111" />
+  <rect width="640" height="240" fill="url(#lines)">
+    <animate attributeName="y" values="0;16;0" dur="2.8s" repeatCount="indefinite" />
+  </rect>
+</svg>

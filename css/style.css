@@ -23,6 +23,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: "Manrope", sans-serif;
+  font-size: 16px;
 }
 a {
   color: inherit;
@@ -54,7 +55,7 @@ textarea {
 .footer-brand {
   align-items: center;
   display: flex;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 800;
   gap: 10px;
   letter-spacing: 0.12em;
@@ -79,7 +80,7 @@ textarea {
 .main-nav {
   align-items: center;
   display: flex;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   gap: 30px;
 }
@@ -123,7 +124,7 @@ textarea {
 .section-label {
   color: var(--muted);
   font-family: monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   margin: 0 0 34px;
 }
@@ -148,7 +149,7 @@ h2 em {
 .button {
   align-items: center;
   display: inline-flex;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.04em;
   padding: 16px 19px;
@@ -166,6 +167,7 @@ h2 em {
   color: var(--white);
 }
 .hero-image {
+  aspect-ratio: 13 / 10;
   background-position: center;
   background-size: cover;
   height: 580px;
@@ -177,7 +179,7 @@ h2 em {
 .image-home {
   background-image:
     linear-gradient(90deg, var(--black), transparent 28%),
-    url("https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1300&q=85");
+    url("../assets/images/hero-car.jpg");
 }
 .hero-number {
   bottom: 32px;
@@ -188,7 +190,7 @@ h2 em {
 }
 .hero-number span {
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
 }
 /* Seções de conteúdo e serviços. */
 .section-pad {
@@ -220,7 +222,7 @@ h2 em {
 .text-link {
   border-bottom: 1px solid currentColor;
   display: inline-flex;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
   padding-bottom: 8px;
 }
@@ -253,7 +255,7 @@ h2 em {
 .numbered-list span,
 .service-row span {
   color: var(--muted);
-  font: 11px monospace;
+  font: 12px monospace;
 }
 .service-card h3 {
   font-size: 30px;
@@ -264,7 +266,7 @@ h2 em {
 .service-card p,
 .service-row p {
   color: var(--dark-text);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.6;
   max-width: 230px;
 }
@@ -297,7 +299,7 @@ h2 em {
   padding: 48px 5.5vw 32px;
 }
 .footer-brand p {
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.5;
   margin: 0;
 }
@@ -305,7 +307,7 @@ h2 em {
 .copyright,
 .footer-note {
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 400;
 }
 .footer-links {
@@ -315,7 +317,7 @@ h2 em {
 }
 .footer-links a {
   color: var(--dark-text);
-  font-size: 11px;
+  font-size: 14px;
 }
 .copyright {
   margin: 0;
@@ -338,7 +340,7 @@ h2 em {
 }
 .page-hero p {
   color: var(--dark-text);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.6;
   margin: 32px 0 0;
   max-width: 370px;
@@ -384,12 +386,12 @@ h2 em {
 }
 .contact-details p {
   color: #4d4d49;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
   max-width: 280px;
 }
 .contact-details address {
-  font-size: 13px;
+  font-size: 16px;
   font-style: normal;
   line-height: 2;
   margin-top: 60px;
@@ -408,7 +410,7 @@ h2 em {
 }
 .field label {
   color: #50504b;
-  font: 10px monospace;
+  font: 12px monospace;
   letter-spacing: 0.08em;
 }
 .field input,
@@ -433,7 +435,7 @@ h2 em {
 }
 .form-status {
   color: #315f3d;
-  font-size: 12px;
+  font-size: 14px;
   margin: 12px 0 0;
 }
 .honeypot {
@@ -459,7 +461,7 @@ h2 em {
 }
 .privacy-note {
   color: #656560;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.5;
   margin: 12px 0 0;
 }
@@ -468,8 +470,33 @@ h2 em {
 }
 .error-message {
   color: #9b2d2d;
-  font-size: 12px;
+  font-size: 14px;
   margin: 6px 0 0;
+}
+
+.skip-link {
+  background: var(--white);
+  color: var(--black);
+  left: 1rem;
+  padding: 0.75rem 1rem;
+  position: absolute;
+  top: -5rem;
+  z-index: 10;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
 /* Adaptações para telas pequenas. */
 @media (max-width: 700px) {
@@ -513,8 +540,8 @@ h2 em {
     padding: 17px 0;
   }
   .hero {
-    min-height: 720px;
-    padding: 138px 6vw 50px;
+    min-height: 0;
+    padding: 138px 6vw 80px;
   }
   .hero-copy {
     width: 100%;
@@ -523,16 +550,17 @@ h2 em {
     font-size: clamp(58px, 18vw, 100px);
   }
   .hero-image {
-    bottom: 0;
-    height: 350px;
-    right: 0;
+    height: auto;
+    margin: 70px -6vw 0;
+    position: relative;
+    right: auto;
     top: auto;
-    width: 100%;
+    width: calc(100% + 12vw);
   }
   .image-home {
     background-image:
       linear-gradient(0deg, var(--black), transparent 70%),
-      url("https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=900&q=85");
+      url("../assets/images/hero-car.jpg");
   }
   .hero-number {
     bottom: 24px;
@@ -586,7 +614,8 @@ h2 em {
     grid-template-columns: 40px 1fr 20px;
   }
   .service-row p {
-    display: none;
+    grid-column: 2 / -1;
+    max-width: none;
   }
   .service-row h3 {
     font-size: 22px;
