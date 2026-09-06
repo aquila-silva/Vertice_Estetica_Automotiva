@@ -285,9 +285,10 @@ h2 em {
 .quote-section blockquote {
   font-size: clamp(30px, 5vw, 66px);
   letter-spacing: -0.06em;
-  line-height: 0.98;
+  line-height: 1;
   margin: 0 auto 44px;
   max-width: 900px;
+  text-align: center;
 }
 /* Rodapé e autoria do projeto. */
 .site-footer {
@@ -344,6 +345,9 @@ h2 em {
   line-height: 1.6;
   margin: 32px 0 0;
   max-width: 370px;
+}
+.error-page .button {
+  margin-top: 36px;
 }
 .body-copy {
   font-size: 16px;
