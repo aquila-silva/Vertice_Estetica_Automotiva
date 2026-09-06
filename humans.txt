@@ -1,0 +1,9 @@
+/* TEAM */
+Author: Aquila Fernando Alves Silva
+Role: Design, content and front-end development
+Repository: GitHub repository for this project
+
+/* SITE */
+Standards: HTML5, CSS3, JavaScript
+Language: Portuguese (Brazil)
+License: MIT for source code; see README.md for image licenses
