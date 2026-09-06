@@ -181,17 +181,6 @@ h2 em {
     linear-gradient(90deg, var(--black), transparent 28%),
     url("../assets/images/hero-car.jpg");
 }
-.hero-number {
-  bottom: 32px;
-  color: var(--white);
-  font: 14px monospace;
-  position: absolute;
-  right: 5.5vw;
-}
-.hero-number span {
-  color: var(--muted);
-  font-size: 12px;
-}
 /* Seções de conteúdo e serviços. */
 .section-pad {
   padding: 120px 10vw;
@@ -575,10 +564,6 @@ h2 em {
     background-image:
       linear-gradient(0deg, var(--black), transparent 70%),
       url("../assets/images/hero-car.jpg");
-  }
-  .hero-number {
-    bottom: 24px;
-    right: 6vw;
   }
   .section-pad {
     padding: 80px 8vw;
