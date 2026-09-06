@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Substitua https://seu-dominio.com pelo domínio oficial antes do lançamento. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://seu-dominio.com/</loc></url>
+  <url><loc>https://seu-dominio.com/servicos.html</loc></url>
+  <url><loc>https://seu-dominio.com/quem-somos.html</loc></url>
+  <url><loc>https://seu-dominio.com/contato.html</loc></url>
+</urlset>

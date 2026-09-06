@@ -1,0 +1,19 @@
+{
+  "name": "Vértice Detail",
+  "short_name": "Vértice",
+  "description": "Estética automotiva de precisão.",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#111111",
+  "theme_color": "#111111",
+  "icons": [
+    {
+      "src": "assets/icons/arrow-up-right.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

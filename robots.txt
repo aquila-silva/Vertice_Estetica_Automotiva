@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Substitua pelo domínio oficial antes do lançamento:
+# Sitemap: https://seu-dominio.com/sitemap.xml
