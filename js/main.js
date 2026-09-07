@@ -2,6 +2,7 @@
 const menuToggle = document.querySelector('.menu-toggle');
 const mainNav = document.querySelector('.main-nav');
 
+
 if (menuToggle && mainNav) {
 	const navLinks = mainNav.querySelectorAll('a');
 	const setMenuState = (isOpen) => {
@@ -24,85 +25,191 @@ if (menuToggle && mainNav) {
 	navLinks.forEach((link) => link.addEventListener('click', () => setMenuState(false)));
 }
 
-// Valida e confirma o formulário.
+// Valida e confirma o formulário. Além de conectar com supabase
+const SUPABASE_URL = 'https://wdyusuhpmefxpbvwewwt.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_xgUqScg6sLTBIy_NP7ulzg_nzr-AVI4';
+
 const contactForm = document.querySelector('.contact-form');
 const formStatus = document.querySelector('.form-status');
 
 if (contactForm && formStatus) {
-	contactForm.addEventListener('submit', (event) => {
+	const submitButton = contactForm.querySelector('button[type="submit"]');
+
+	contactForm.addEventListener('submit', async (event) => {
 		event.preventDefault();
+
 		// Bloqueia bots que preenchem campos ocultos.
 		if (contactForm.elements.website.value) return;
-		// Regras específicas de cada campo.
+
 		const fields = {
 			name: { label: 'nome', min: 2, max: 80 },
 			email: { label: 'e-mail', max: 120 },
 			car: { label: 'carro', max: 100, optional: true },
 			message: { label: 'mensagem', min: 10, max: 1000 }
 		};
+
 		let isValid = true;
 		let firstInvalidField = null;
 
 		// Remove erros anteriores.
-		contactForm.querySelectorAll('.error-message').forEach((error) => error.remove());
+		contactForm
+			.querySelectorAll('.error-message')
+			.forEach((error) => error.remove());
+
 		const consent = contactForm.elements.consent;
+
 		if (!consent.checked) {
 			const error = document.createElement('p');
 			error.className = 'error-message';
 			error.id = 'consent-error';
 			error.textContent = 'Autorize o uso dos dados para continuar.';
+
 			consent.setAttribute('aria-invalid', 'true');
 			consent.setAttribute('aria-describedby', error.id);
 			consent.parentElement.append(error);
 		}
-		// Valida campos e acessibilidade.
+
+		// Validação dos campos.
 		Object.entries(fields).forEach(([fieldName, rules]) => {
 			const field = contactForm.elements[fieldName];
 			const value = field.value.trim();
 			let errorMessage = '';
+
 			field.removeAttribute('aria-describedby');
 
-			if (!rules.optional && !value) errorMessage = `Informe seu ${rules.label}.`;
-			if (!errorMessage && value && rules.min && value.length < rules.min) errorMessage = `O ${rules.label} deve ter pelo menos ${rules.min} caracteres.`;
-			if (!errorMessage && value.length > rules.max) errorMessage = `O ${rules.label} deve ter no máximo ${rules.max} caracteres.`;
-			if (!errorMessage && fieldName === 'email' && value && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) errorMessage = 'Informe um e-mail válido.';
+			if (!rules.optional && !value) {
+				errorMessage = `Informe seu ${rules.label}.`;
+			}
 
-			field.setAttribute('aria-invalid', String(Boolean(errorMessage)));
+			if (
+				!errorMessage &&
+				value &&
+				rules.min &&
+				value.length < rules.min
+			) {
+				errorMessage = `O ${rules.label} deve ter pelo menos ${rules.min} caracteres.`;
+			}
+
+			if (
+				!errorMessage &&
+				value.length > rules.max
+			) {
+				errorMessage = `O ${rules.label} deve ter no máximo ${rules.max} caracteres.`;
+			}
+
+			if (
+				!errorMessage &&
+				fieldName === 'email' &&
+				value &&
+				!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)
+			) {
+				errorMessage = 'Informe um e-mail válido.';
+			}
+
+			field.setAttribute(
+				'aria-invalid',
+				String(Boolean(errorMessage))
+			);
+
 			if (errorMessage) {
 				isValid = false;
-				firstInvalidField ??= field;
+
+				if (!firstInvalidField) {
+					firstInvalidField = field;
+				}
+
 				const error = document.createElement('p');
 				error.className = 'error-message';
 				error.textContent = errorMessage;
 				error.id = `${fieldName}-error`;
+
 				field.setAttribute('aria-describedby', error.id);
 				field.closest('.field').append(error);
 			}
 		});
+
 		if (consent.checked) {
 			consent.setAttribute('aria-invalid', 'false');
 			consent.removeAttribute('aria-describedby');
 		}
 
 		isValid = isValid && consent.checked;
-		if (!consent.checked && !firstInvalidField) firstInvalidField = consent;
-		// Exibe o resultado da validação.
+
+		if (!consent.checked && !firstInvalidField) {
+			firstInvalidField = consent;
+		}
+
+		// Interrompe caso exista erro de validação.
 		if (!isValid) {
-			formStatus.textContent = 'Revise os campos destacados antes de enviar.';
+			formStatus.textContent =
+				'Revise os campos destacados antes de enviar.';
+
 			formStatus.setAttribute('role', 'alert');
+
 			firstInvalidField?.focus();
+
 			return;
 		}
 
-		formStatus.textContent = 'Mensagem recebida. Em breve falamos com você.';
+		// Estado de envio.
+		submitButton.disabled = true;
+		submitButton.setAttribute('aria-busy', 'true');
+		formStatus.textContent = 'Enviando mensagem...';
 		formStatus.setAttribute('role', 'status');
-		// Limpa estados após envio.
-		contactForm.reset();
-		Object.keys(fields).forEach((fieldName) => {
-			const field = contactForm.elements[fieldName];
-			field.setAttribute('aria-invalid', 'false');
-			field.removeAttribute('aria-describedby');
-		});
-		consent.setAttribute('aria-invalid', 'false');
+
+		const lead = {
+			name: contactForm.elements.name.value.trim(),
+			email: contactForm.elements.email.value.trim(),
+			car: contactForm.elements.car.value.trim() || null,
+			message: contactForm.elements.message.value.trim(),
+			consent: true,
+			source: 'vertice-detail'
+		};
+
+		try {
+			const response = await fetch(
+				`${SUPABASE_URL}/rest/v1/leads`,
+				{
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						'apikey': SUPABASE_KEY,
+						'Authorization': `Bearer ${SUPABASE_KEY}`,
+						'Prefer': 'return=minimal'
+					},
+					body: JSON.stringify(lead)
+				}
+			);
+
+			if (!response.ok) {
+				throw new Error(`Supabase respondeu com ${response.status}`);
+			}
+
+			// Sucesso.
+			formStatus.textContent =
+				'Mensagem recebida. Em breve falamos com você.';
+
+			contactForm.reset();
+
+			Object.keys(fields).forEach((fieldName) => {
+				const field = contactForm.elements[fieldName];
+
+				field.setAttribute('aria-invalid', 'false');
+				field.removeAttribute('aria-describedby');
+			});
+
+			consent.setAttribute('aria-invalid', 'false');
+
+		} catch (error) {
+			console.error('Erro ao enviar formulário:', error);
+
+			formStatus.textContent =
+				'Não foi possível enviar sua mensagem. Tente novamente.';
+
+			formStatus.setAttribute('role', 'alert');
+		} finally {
+			submitButton.disabled = false;
+			submitButton.removeAttribute('aria-busy');
+		}
 	});
 }
