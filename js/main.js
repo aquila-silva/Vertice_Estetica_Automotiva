@@ -27,7 +27,7 @@ if (menuToggle && mainNav) {
 
 // Valida e confirma o formulário. Além de conectar com supabase
 const SUPABASE_URL = 'https://wdyusuhpmefxpbvwewwt.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_xgUqScg6sLTBIy_NP7ulzg_nzr-AVI4';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkeXVzdWhwbWVmeHBidndld3d0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg3MzgzMjUsImV4cCI6MjEwNDMxNDMyNX0.A0jFTH-hqs1mBNZD1tUrhT4LsfbltEdMVq0k-18uXoc';
 
 const contactForm = document.querySelector('.contact-form');
 const formStatus = document.querySelector('.form-status');
