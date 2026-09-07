@@ -26,7 +26,7 @@ if (menuToggle && mainNav) {
 }
 
 // Valida e confirma o formulário. Além de conectar com supabase
-const SUPABASE_URL = 'https://wdyusuhpmefxpbvwewwt.supabase.co/rest/v1/';
+const SUPABASE_URL = 'https://wdyusuhpmefxpbvwewwt.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_xgUqScg6sLTBIy_NP7ulzg_nzr-AVI4';
 
 const contactForm = document.querySelector('.contact-form');
