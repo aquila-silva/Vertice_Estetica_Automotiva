@@ -30,8 +30,6 @@ if (menuToggle && mainNav) {
 }
 
 // Valida e envia o formulario para a tabela cadastros do Supabase.
-const supabaseConfig = window.SUPABASE_CONFIG;
-
 const contactForm = document.querySelector(".contact-form");
 const formStatus = document.querySelector(".form-status");
 
@@ -158,23 +156,16 @@ if (contactForm && formStatus) {
     };
 
     try {
-      if (!supabaseConfig?.url || !supabaseConfig?.anonKey) {
+      const supabase = window.UdiAutoLabSupabase?.getClient();
+
+      if (!supabase) {
         throw new Error("Configuracao do Supabase nao encontrada");
       }
 
-      const response = await fetch(`${supabaseConfig.url}/rest/v1/cadastros`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          apikey: supabaseConfig.anonKey,
-          Authorization: `Bearer ${supabaseConfig.anonKey}`,
-          Prefer: "return=minimal",
-        },
-        body: JSON.stringify(lead),
-      });
+      const { error } = await supabase.from("cadastros").insert(lead);
 
-      if (!response.ok) {
-        throw new Error(`Supabase respondeu com ${response.status}`);
+      if (error) {
+        throw error;
       }
 
       // Sucesso.
