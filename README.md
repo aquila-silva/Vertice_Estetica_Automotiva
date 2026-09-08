@@ -99,6 +99,7 @@ Não existe backend próprio nem etapa de compilação. O navegador carrega os a
 | `style.css` | Variáveis de cor, tipografia, componentes, grid, responsividade e estados de foco. |
 | `assets.css` | Grid e cartões usados no catálogo de assets. |
 | `20260907_create_cadastros.sql` | Cria a tabela de contatos e restringe inserções por RLS. |
+| `20260908_add_contact_fields.sql` | Adiciona telefone, serviço e recarrega o schema do PostgREST. |
 
 ## Páginas e recursos
 
@@ -193,7 +194,7 @@ Também teste manualmente o menu móvel, os estados de validação e um envio re
 Para configurar uma nova instância:
 
 1. Crie um projeto no [Supabase](https://supabase.com/).
-2. Abra o SQL Editor e execute `supabase/migrations/20260907_create_cadastros.sql`.
+2. Abra o SQL Editor e execute, nesta ordem, `supabase/migrations/20260907_create_cadastros.sql` e `supabase/migrations/20260908_add_contact_fields.sql`.
 3. Confira a URL e a chave pública `anon` em **Project Settings → API**.
 4. Atualize os valores correspondentes em `js/supabase-client.js`.
 5. Faça um envio de teste e confirme a inserção em `public.cadastros`.
