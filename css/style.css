@@ -327,6 +327,7 @@ h2 em {
 }
 .footer-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 23px;
   justify-content: center;
 }
