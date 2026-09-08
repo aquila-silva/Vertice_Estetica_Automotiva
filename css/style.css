@@ -736,7 +736,9 @@ h2 em {
   }
   .service-row p {
     max-width: none;
+    overflow-wrap: anywhere;
   }
+  .service-copy { min-width: 0; }
   .service-row h3 {
     font-size: 22px;
   }
