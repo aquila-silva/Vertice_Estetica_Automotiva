@@ -12,7 +12,7 @@
     <meta name="referrer" content="no-referrer" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; connect-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; media-src 'self';"
+      content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; connect-src 'none'; frame-src https://www.google.com; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; media-src 'self';"
     />
 
     <title>Vértice Detail | Precisão em cada detalhe</title>
@@ -193,7 +193,22 @@
           <details class="faq-item"><summary>Atendem quais tipos de veículos?</summary><p>Carros de passeio, esportivos, SUVs e veículos de coleção, sempre com processo adaptado ao material.</p></details>
         </div></div>
       </section>
-      <section class="map-section"><div class="map-frame"><div class="map-info"><strong>Vértice Detail</strong><p>Av. Floriano Peixoto, Centro<br>Uberlândia, MG</p><a href="https://maps.google.com/?q=Av.+Floriano+Peixoto,+Uberlândia" target="_blank" rel="noopener">Abrir no mapa ↗</a></div></div></section>
+      <section class="map-section" aria-label="Localização">
+        <div class="map-frame">
+          <iframe
+            class="map-embed"
+            title="Mapa da Vértice Detail em Uberlândia"
+            src="https://www.google.com/maps?q=Av.+Floriano+Peixoto,+Centro,+Uberlândia,+MG&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+          <div class="map-info">
+            <strong>Vértice Detail</strong>
+            <p>Av. Floriano Peixoto, Centro<br />Uberlândia, MG</p>
+            <a href="https://maps.google.com/?q=Av.+Floriano+Peixoto,+Uberlândia" target="_blank" rel="noopener">Abrir no mapa ↗</a>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- Rodapé com autoria da página fictícia. -->

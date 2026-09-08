@@ -556,10 +556,8 @@ h2 em {
 .faq-item[open] summary::after { content: "-"; }
 .faq-item p { color: #55554f; font-size: 14px; line-height: 1.7; margin: -5px 0 22px; max-width: 470px; }
 .map-section { background: #d4d4ce; padding: 0 10vw 120px; }
-.map-frame { background: linear-gradient(135deg, #bbc1b9, #d9d9d1); min-height: 270px; overflow: hidden; position: relative; }
-.map-frame::before, .map-frame::after { border: 1px solid rgba(17,17,17,.18); content: ""; position: absolute; transform: rotate(-17deg); width: 140%; }
-.map-frame::before { left: -20%; top: 40%; }
-.map-frame::after { left: -10%; top: 65%; transform: rotate(24deg); }
+.map-frame { background: #bbc1b9; min-height: 420px; overflow: hidden; position: relative; }
+.map-embed { border: 0; display: block; height: 420px; width: 100%; }
 .map-info { background: var(--black); color: var(--white); left: 28px; max-width: 280px; padding: 22px; position: absolute; top: 28px; z-index: 1; }
 .map-info p { color: var(--muted); font-size: 13px; line-height: 1.6; margin: 8px 0 18px; }
 .map-info a { color: var(--white); font-size: 12px; text-decoration: underline; }
@@ -592,7 +590,9 @@ h2 em {
   .feature-grid, .testimonial-grid, .gallery-grid, .faq-grid, .portfolio-grid { grid-template-columns: 1fr; }
   .feature-card { padding-bottom: 25px; }
   .map-section { padding: 0 8vw 80px; }
-  .map-info { left: 18px; right: 18px; top: 18px; }
+  .map-frame { min-height: 0; }
+  .map-embed { height: clamp(300px, 82vw, 420px); }
+  .map-info { left: 0; max-width: none; position: relative; right: auto; top: auto; }
   .comparison { margin-top: 55px; padding: 18px; }
 }
 
