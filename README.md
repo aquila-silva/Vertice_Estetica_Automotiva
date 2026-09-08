@@ -31,6 +31,8 @@ O site foi construído como uma aplicação estática, sem framework e sem proce
 ### Características
 
 - Navegação compartilhada entre as páginas públicas.
+- Home com diferenciais, galeria, depoimentos, FAQ e mapa.
+- Portfólio com filtros, lightbox e comparação visual antes/depois.
 - Layout responsivo para desktop e dispositivos móveis.
 - Menu móvel com suporte à tecla `Escape` e atributos ARIA.
 - Validação no navegador com mensagens de erro associadas aos campos.
@@ -60,6 +62,7 @@ Não existe backend próprio nem etapa de compilação. O navegador carrega os a
 ├── humans.txt                       # Informações de autoria do projeto
 ├── index.html                       # Página inicial
 ├── quem-somos.html                  # Página institucional
+├── portfolio.html                   # Portfólio, filtros e comparação antes/depois
 ├── servicos.html                    # Apresentação dos serviços
 ├── site.webmanifest                 # Metadados para instalação como app
 ├── robots.txt                       # Regras para robôs de busca
@@ -78,7 +81,8 @@ Não existe backend próprio nem etapa de compilação. O navegador carrega os a
 │   └── supabase-client.js           # Fábrica do cliente Supabase
 └── supabase/
     └── migrations/
-        └── 20260907_create_cadastros.sql # Schema, grants e RLS
+        ├── 20260907_create_cadastros.sql # Schema, grants e RLS
+        └── 20260908_add_contact_fields.sql # Campos telefone e serviço
 ```
 
 ### Responsabilidade dos arquivos principais
@@ -88,8 +92,9 @@ Não existe backend próprio nem etapa de compilação. O navegador carrega os a
 | `index.html` | Hero, posicionamento da marca, destaques e chamadas para ação. |
 | `servicos.html` | Catálogo dos serviços de estética automotiva. |
 | `quem-somos.html` | Conteúdo institucional e posicionamento da empresa. |
+| `portfolio.html` | Trabalhos selecionados, filtros e comparação antes/depois. |
 | `contato.html` | Dados de contato, formulário, consentimento e carregamento do Supabase. |
-| `main.js` | Menu responsivo, validação dos campos, estados da interface e persistência do lead. |
+| `main.js` | Menu, validação, persistência do lead, filtros, lightbox e comparação. |
 | `supabase-client.js` | Cria o cliente com `window.supabase.createClient` e expõe `window.UdiAutoLabSupabase.getClient()`. |
 | `style.css` | Variáveis de cor, tipografia, componentes, grid, responsividade e estados de foco. |
 | `assets.css` | Grid e cartões usados no catálogo de assets. |
@@ -102,6 +107,7 @@ As páginas públicas permanecem na raiz para preservar URLs simples e compatív
 - `/` ou `/index.html`: entrada principal do site.
 - `/servicos.html`: serviços oferecidos.
 - `/quem-somos.html`: apresentação institucional.
+- `/portfolio.html`: trabalhos selecionados, filtros e comparação antes/depois.
 - `/contato.html`: contato e conversão de visitantes em leads.
 - `/404.html`: fallback visual para páginas inexistentes.
 - `/assets/index.html`: catálogo interno para conferência de imagens, ícones e vídeos.
@@ -114,7 +120,7 @@ O fluxo de envio em `js/main.js` é:
 
 1. Interceptar o submit para evitar o envio HTML padrão.
 2. Ignorar silenciosamente o envio quando o campo honeypot `website` estiver preenchido.
-3. Validar nome, e-mail, carro, mensagem e consentimento.
+3. Validar nome, e-mail, telefone, serviço, carro, mensagem e consentimento.
 4. Mostrar erros no campo correspondente e focar o primeiro campo inválido.
 5. Desabilitar o botão e indicar que o envio está em andamento.
 6. Obter o cliente por `window.UdiAutoLabSupabase.getClient()`.
@@ -128,6 +134,8 @@ O objeto enviado possui os campos:
 {
   name,
   email,
+  phone,
+  service,
   car,
   message,
   consent: true,
@@ -144,6 +152,8 @@ A migration `supabase/migrations/20260907_create_cadastros.sql` cria `public.cad
 - `id`: identificador inteiro autogerado.
 - `name`: nome entre 2 e 80 caracteres.
 - `email`: e-mail entre 3 e 120 caracteres.
+- `phone`: telefone entre 8 e 20 caracteres, opcional para registros legados.
+- `service`: serviço de interesse, opcional, com até 60 caracteres.
 - `car`: modelo, ano e cor, opcional, com até 100 caracteres.
 - `message`: mensagem entre 10 e 1000 caracteres.
 - `consent`: obrigatório e sempre `true`.

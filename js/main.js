@@ -29,6 +29,14 @@ if (menuToggle && mainNav) {
   );
 }
 
+// Atalho de telefone para navegação mobile.
+const mobilePhoneButton = document.createElement("a");
+mobilePhoneButton.className = "mobile-phone-button";
+mobilePhoneButton.href = "tel:+5511999999999";
+mobilePhoneButton.setAttribute("aria-label", "Ligar para a Vértice Detail");
+mobilePhoneButton.textContent = "☎";
+document.body.append(mobilePhoneButton);
+
 // Valida e envia o formulario para a tabela cadastros do Supabase.
 const contactForm = document.querySelector(".contact-form");
 const formStatus = document.querySelector(".form-status");
@@ -45,6 +53,8 @@ if (contactForm && formStatus) {
     const fields = {
       name: { label: "nome", min: 2, max: 80 },
       email: { label: "e-mail", max: 120 },
+      phone: { label: "telefone", min: 8, max: 20 },
+      service: { label: "serviço", max: 60, optional: true },
       car: { label: "carro", max: 100, optional: true },
       message: { label: "mensagem", min: 10, max: 1000 },
     };
@@ -149,6 +159,8 @@ if (contactForm && formStatus) {
     const lead = {
       name: contactForm.elements.name.value.trim(),
       email: contactForm.elements.email.value.trim(),
+      phone: contactForm.elements.phone.value.trim(),
+      service: contactForm.elements.service.value.trim() || null,
       car: contactForm.elements.car.value.trim() || null,
       message: contactForm.elements.message.value.trim(),
       consent: true,
@@ -194,3 +206,51 @@ if (contactForm && formStatus) {
     }
   });
 }
+
+// Filtra projetos, abre imagens e controla a comparação antes/depois.
+const filterButtons = document.querySelectorAll("[data-filter]");
+const portfolioCards = document.querySelectorAll(".portfolio-card");
+
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const filter = button.dataset.filter;
+    filterButtons.forEach((item) => item.classList.toggle("active", item === button));
+    portfolioCards.forEach((card) => {
+      card.hidden = filter !== "all" && card.dataset.category !== filter;
+    });
+  });
+});
+
+const lightbox = document.createElement("div");
+lightbox.className = "lightbox";
+lightbox.setAttribute("role", "dialog");
+lightbox.setAttribute("aria-modal", "true");
+lightbox.setAttribute("aria-label", "Imagem ampliada");
+lightbox.innerHTML = '<button class="lightbox-close" type="button" aria-label="Fechar imagem">×</button><img alt="">';
+document.body.append(lightbox);
+
+const closeLightbox = () => lightbox.classList.remove("open");
+document.querySelectorAll(".lightbox-trigger").forEach((trigger) => {
+  trigger.addEventListener("click", () => {
+    const image = lightbox.querySelector("img");
+    image.src = trigger.dataset.full;
+    image.alt = trigger.querySelector("img")?.alt || "Imagem ampliada";
+    lightbox.classList.add("open");
+    lightbox.querySelector(".lightbox-close").focus();
+  });
+});
+lightbox.querySelector(".lightbox-close").addEventListener("click", closeLightbox);
+lightbox.addEventListener("click", (event) => {
+  if (event.target === lightbox) closeLightbox();
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeLightbox();
+});
+
+document.querySelectorAll(".comparison").forEach((comparison) => {
+  const range = comparison.querySelector(".comparison-range");
+  const after = comparison.querySelector(".comparison-after");
+  range?.addEventListener("input", () => {
+    after.style.clipPath = `inset(0 0 0 ${range.value}%)`;
+  });
+});

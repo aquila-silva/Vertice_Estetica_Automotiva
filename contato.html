@@ -52,10 +52,12 @@
         id="main-navigation"
         aria-label="Navegação principal"
       >
-        <a href="index.html">Home</a><a href="servicos.html">Serviços</a
-        ><a href="quem-somos.html">Quem somos</a
-        ><a class="nav-contact active" href="contato.html" aria-current="page"
-          >Fale conosco <span>↗</span></a
+        <a href="index.html">Home</a><a href="quem-somos.html">Sobre</a
+        ><a href="servicos.html">Serviços</a
+        ><a href="portfolio.html">Portfólio</a
+        ><a class="active" href="contato.html" aria-current="page">Contato</a
+        ><a class="nav-contact whatsapp-link" href="https://wa.me/5511999999999" target="_blank" rel="noopener"
+          >WhatsApp <span>↗</span></a
         >
       </nav>
     </header>
@@ -119,6 +121,14 @@
               />
             </div>
             <div class="field">
+              <label for="phone">SEU TELEFONE</label
+              ><input id="phone" name="phone" type="tel" placeholder="(00) 00000-0000" autocomplete="tel" maxlength="20" required />
+            </div>
+            <div class="field">
+              <label for="service">SERVIÇO DE INTERESSE</label
+              ><select id="service" name="service"><option value="">Selecione uma opção</option><option>Detailing externo</option><option>Detailing interno</option><option>Proteção cerâmica</option><option>Polimento técnico</option></select>
+            </div>
+            <div class="field">
               <label for="car">SOBRE O CARRO</label
               ><input
                 id="car"
@@ -163,6 +173,7 @@
         </div>
       </section>
     </main>
+    <section class="map-section" aria-label="Localização"><div class="map-frame"><div class="map-info"><strong>Visite a Vértice</strong><p>Av. Floriano Peixoto, Centro<br />Uberlândia, MG</p><a href="https://maps.google.com/?q=Av.+Floriano+Peixoto,+Uberlândia" target="_blank" rel="noopener">Abrir no mapa ↗</a></div></div></section>
     <!-- Rodapé com autoria da página fictícia. -->
     <footer class="site-footer">
       <div class="footer-brand">
@@ -170,8 +181,10 @@
         <p>VÉRTICE DETAIL<br /><span>Estética automotiva de precisão.</span></p>
       </div>
       <div class="footer-links">
-        <a href="contato.html">Instagram ↗</a
-        ><a href="contato.html">WhatsApp ↗</a
+        <a href="portfolio.html">Portfólio ↗</a
+        ><a href="https://instagram.com" target="_blank" rel="noopener">Instagram ↗</a
+        ><a href="https://wa.me/5511999999999" target="_blank" rel="noopener">WhatsApp ↗</a
+        ><a href="https://maps.google.com/?q=Av.+Floriano+Peixoto,+Uberlândia" target="_blank" rel="noopener">Mapa ↗</a
         ><a href="contato.html">Contato ↗</a>
       </div>
       <p class="copyright">© 2026 Vértice Detail</p>
