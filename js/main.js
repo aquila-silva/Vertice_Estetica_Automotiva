@@ -29,13 +29,19 @@ if (menuToggle && mainNav) {
   );
 }
 
-// Atalho de telefone para navegação mobile.
-const mobilePhoneButton = document.createElement("a");
-mobilePhoneButton.className = "mobile-phone-button";
-mobilePhoneButton.href = "tel:+5511999999999";
-mobilePhoneButton.setAttribute("aria-label", "Ligar para a Vértice Detail");
-mobilePhoneButton.textContent = "☎";
-document.body.append(mobilePhoneButton);
+// CTA global de WhatsApp, presente em todas as páginas públicas.
+const whatsappButton = document.createElement("a");
+const whatsappMessage = encodeURIComponent(
+  "Olá! Gostaria de agendar uma avaliação para o meu carro.",
+);
+whatsappButton.className = "whatsapp-float";
+whatsappButton.href = `https://wa.me/5511999999999?text=${whatsappMessage}`;
+whatsappButton.target = "_blank";
+whatsappButton.rel = "noopener";
+whatsappButton.setAttribute("aria-label", "Falar no WhatsApp");
+whatsappButton.title = "Falar no WhatsApp";
+whatsappButton.innerHTML = `<svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.08 0C5.55 0 .23 5.32.23 11.86c0 2.09.55 4.13 1.59 5.93L.12 24l6.36-1.67a11.85 11.85 0 0 0 5.6 1.42h.01c6.53 0 11.85-5.32 11.85-11.86 0-3.17-1.23-6.14-3.44-8.39ZM12.09 21.7h-.01a9.85 9.85 0 0 1-5.02-1.37l-.36-.21-3.77.99 1-3.67-.23-.38a9.84 9.84 0 0 1-1.51-5.2c0-5.4 4.4-9.8 9.81-9.8a9.75 9.75 0 0 1 6.94 2.88 9.83 9.83 0 0 1 2.87 6.96c0 5.4-4.4 9.8-9.81 9.8Zm5.38-7.35c-.29-.15-1.7-.84-1.96-.94-.26-.1-.45-.15-.64.15-.19.29-.74.94-.91 1.13-.17.2-.34.22-.63.07-.29-.15-1.2-.44-2.28-1.41-.84-.75-1.41-1.68-1.58-1.96-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.51.15-.17.19-.29.29-.49.1-.2.05-.37-.02-.52-.07-.15-.64-1.55-.88-2.12-.23-.56-.47-.48-.64-.49h-.54c-.19 0-.49.07-.74.37-.25.29-.98.96-.98 2.36 0 1.4 1.01 2.75 1.15 2.94.14.2 1.98 3.03 4.8 4.25.67.29 1.19.46 1.6.59.67.21 1.27.18 1.75.11.54-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.54-.34Z" /></svg><span>Fale conosco</span>`;
+document.body.append(whatsappButton);
 
 // Valida e envia o formulario para a tabela cadastros do Supabase.
 const contactForm = document.querySelector(".contact-form");

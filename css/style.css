@@ -97,25 +97,38 @@ textarea {
   border-color: #c8d8c2;
   color: var(--black) !important;
 }
-.mobile-phone-button {
+.whatsapp-float {
   align-items: center;
-  animation: phone-pulse 2s ease-in-out infinite;
-  background: #c8d8c2;
+  animation: whatsapp-pulse 3s ease-in-out infinite;
+  background: #25d366;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.2);
   bottom: 20px;
-  color: var(--black);
-  display: none;
-  font-size: 25px;
-  height: 56px;
+  color: #fff;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 800;
+  gap: 10px;
   justify-content: center;
-  line-height: 1;
+  min-height: 52px;
+  padding: 0 18px;
   position: fixed;
-  right: 20px;
-  width: 56px;
+  right: 24px;
+  transition: transform .2s, box-shadow .2s;
   z-index: 8;
 }
-@keyframes phone-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(200, 216, 194, .72); }
-  50% { box-shadow: 0 0 0 13px rgba(200, 216, 194, 0); }
+.whatsapp-float:hover {
+  box-shadow: 0 7px 18px rgba(0,0,0,.28);
+  transform: scale(1.05);
+}
+.whatsapp-float svg {
+  fill: currentColor;
+  height: 26px;
+  width: 26px;
+}
+@keyframes whatsapp-pulse {
+  0%, 80%, 100% { box-shadow: 0 4px 12px rgba(0,0,0,.2), 0 0 0 0 rgba(37,211,102,.45); }
+  90% { box-shadow: 0 4px 12px rgba(0,0,0,.2), 0 0 0 10px rgba(37,211,102,0); }
 }
 .nav-contact {
   border: 1px solid #bdbdb7;
@@ -609,7 +622,8 @@ h2 em {
 }
 /* Adaptações para telas pequenas. */
 @media (max-width: 700px) {
-  .mobile-phone-button { display: inline-flex; }
+  .whatsapp-float { border-radius: 50%; min-height: 52px; padding: 0; right: 20px; width: 52px; }
+  .whatsapp-float span { display: none; }
   .site-header {
     height: 72px;
     padding: 0 6vw;
