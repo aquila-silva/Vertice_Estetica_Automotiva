@@ -180,8 +180,8 @@ textarea {
 }
 .hero h1 {
   font-size: clamp(56px, 8vw, 124px);
-  letter-spacing: -0.07em;
-  line-height: 0.88;
+  letter-spacing: -0.04em;
+  line-height: 0.98;
   margin: 0 0 36px;
 }
 .hero h1 em,
@@ -377,10 +377,10 @@ h2 em {
   padding: 180px 10vw 70px;
 }
 .page-hero h1 {
-  font-size: clamp(52px, 9vw, 120px);
-  letter-spacing: -0.08em;
-  line-height: 0.85;
-  margin: 0;
+  font-size: clamp(56px, 8vw, 124px);
+  letter-spacing: -0.05em;
+  line-height: 0.98;
+  margin: 0 0 36px;
 }
 .page-hero p {
   color: var(--dark-text);
