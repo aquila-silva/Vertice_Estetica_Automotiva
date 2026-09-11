@@ -41,7 +41,7 @@ textarea {
 /* Navegação principal e marca. */
 .site-header {
   align-items: center;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
   display: flex;
   height: 96px;
   justify-content: space-between;
@@ -337,6 +337,9 @@ h2 em {
   display: grid;
   grid-template-columns: 1fr 1fr auto;
   padding: 48px 5.5vw 32px;
+}
+.site-footer a:hover{
+  color: var(--line);
 }
 .footer-brand p {
   font-size: 14px;
